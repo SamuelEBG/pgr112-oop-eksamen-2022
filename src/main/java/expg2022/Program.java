@@ -22,7 +22,7 @@ public class Program {
     private User currentPlayer;
 
     public Program() {
-        // quizzesFromTextToDb();
+        //quizzesFromTextToDb();
         Scanner input = new Scanner(System.in);
         createUser(input);
         topicMenu(input);
@@ -41,29 +41,40 @@ public class Program {
     }
 
     public void topicMenu(Scanner input){
+        boolean running = true;
+
         String topicChoices = """
                 1 - American Football (Multi-choice Quiz)\s
-                2 - MMA (Binary Quiz)""";
-        System.out.println("Choose what quiz you want to play \n" + topicChoices);
+                2 - MMA (Binary Quiz)
+                3 - Quit the program""";
+
         String userChoice;
-        boolean choice = true;
-        while(choice){
+        while(running){
+
+            System.out.println("Choose what quiz you want to play \n" + topicChoices);
             userChoice = input.nextLine();
-            if(userChoice.equals("1")){
-                multiChoiceQuiz(input);
-                gameMenu(input, userChoice);
-                choice = false;
-            } else if(userChoice.equals("2")){
-                binaryQuiz(input);
-                gameMenu(input, userChoice);
-                choice = false;
-            } else System.out.println("Not a recognized topic, try again.");
+
+            switch (userChoice) {
+                case "1" -> {
+                    multiChoiceQuiz(input);
+                    gameMenu(input, userChoice);
+                }
+                case "2" -> {
+                    binaryQuiz(input);
+                    gameMenu(input, userChoice);
+                }
+                case "3" -> {
+                    System.out.println("Shutting down the program, au revoir!");
+                    running = false;
+                }
+                default -> System.out.println("Not a recognized topic, try again.");
+            }
         }
-        System.out.println("should not get here");
     }
 
     public void gameMenu(Scanner input, String topic){
         boolean running = true;
+
         String menuChoicesBinary = """
             1 - List highscores for a specific user
             2 - List all scores above a specific number for the MMA-quiz
@@ -74,12 +85,14 @@ public class Program {
             2 - List all scores above a specific number for the American Football-quiz
             3 - Play another round of the American Football-Quiz
             4 - Quit the game""";
-        String choice;
+
+        String userChoice;
         do{
             if(topic.equals("1")){
                 System.out.println(menuChoicesMultiChoice);
-                choice = input.nextLine();
-                switch(choice){
+                userChoice = input.nextLine();
+
+                switch(userChoice){
                     case "1" -> {
                         System.out.println("Enter a username to search by");
                         String userName = input.nextLine();
@@ -92,7 +105,7 @@ public class Program {
                     }
                     case "3" -> multiChoiceQuiz(input);
                     case "4" -> {
-                        System.out.println("Quitting game, good bye!");
+                        System.out.println("Quitting the game!");
                         running = false;
                     }
                     default -> {
@@ -104,8 +117,9 @@ public class Program {
 
             if(topic.equals("2")){
                 System.out.println(menuChoicesBinary);
-                choice = input.nextLine();
-                switch(choice){
+                userChoice = input.nextLine();
+
+                switch(userChoice){
                     case "1" -> {
                         System.out.println("Enter a username to search by");
                         String userName = input.nextLine();
@@ -118,14 +132,13 @@ public class Program {
                     }
                     case "3" -> binaryQuiz(input);
                     case "4" -> {
-                        System.out.println("Quitting game, good bye!");
+                        System.out.println("Quitting the game!");
                         running = false;
                     }
                 }
             }
         } while (running);
     }
-
 
     public void binaryQuiz(Scanner input){
         BinaryQuizDao bqd = new BinaryQuizDao();
@@ -150,8 +163,8 @@ public class Program {
             System.out.println("Question " + (i+1) + " : "
                     + currentQuizList.get(i).getQuestion());
             userAnswer = input.nextLine();
-
-            if(!userAnswer.equals(currentQuizList.get(i).getCorrectAnswer())){
+            // !userAnswer.equals(currentQuizList.get(i).getCorrectAnswer())
+            if(!currentQuizList.get(i).isCorrectAnswer(userAnswer)){
                 System.out.println("Incorrect answer");
 
                 if(i == 4){
@@ -193,7 +206,6 @@ public class Program {
                 }
             }
         }
-
         if(currentScore == -1){
             return;
         }
@@ -201,7 +213,7 @@ public class Program {
         addHighscore(new UserScore(currentScore, "MMA", currentPlayer));
         System.out.println("Your final score is " + currentScore + " of " + counter + "\n" +
                 "\n" +
-                "Here are the top 5 scores for this quiz, see if you made it on the list!");
+                "Here is the highscore for this quiz, see if you made it in the top 5!");
         printHighScore("MMA");
     }
 
@@ -235,9 +247,12 @@ public class Program {
             int inputNumber = Integer.parseInt(input.nextLine());
 
             // Can shuffle answers so that they cannot be memorized.
+            // !currentQuizList.get(i)
+            //                    .getAnswers().get((inputNumber-1))
+            //                    .equals(currentQuizList.get(i).getCorrectAnswer())
             if(!currentQuizList.get(i)
-                    .getAnswers().get((inputNumber-1))
-                    .equals(currentQuizList.get(i).getCorrectAnswer())){
+                    .isCorrectAnswer(currentQuizList.get(i)
+                    .getAnswers().get((inputNumber-1)))){
                 System.out.println("Incorrect answer");
 
                 if(i == 4){
@@ -279,14 +294,13 @@ public class Program {
                 }
             }
         }
-
         if(currentScore == -1){
             return;
         }
 
         addHighscore(new UserScore(currentScore, "American Football", currentPlayer));
         System.out.println("Your final score is " + currentScore + " of " + counter + "\n" +
-                "Here is the top 5 scores, see if you made it on the list!\n");
+                "Here is the highscore for this quiz, see if you made it in the top 5!\n");
         printHighScore("American Football");
     }
 
@@ -313,8 +327,10 @@ public class Program {
                 usd.retrieveByScoreHigherThan(score, filterTopic));
 
         if(highscore.isEmpty()){
-            System.out.println("No one has registered a highscore that high\n" +
-                    "So go ahead and play a game and try to get on the highscore list!");
+            System.out.println("""
+                    No one has registered a highscore that high..
+                    So go ahead and play a game and try to get on the highscore list!
+                    """);
             return;
         }
 

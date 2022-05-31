@@ -14,21 +14,17 @@ public abstract class AbstractQuiz {
         this.correctAnswer = correctAnswer;
     }
 
-    public abstract void showQuestion();
     public abstract boolean isCorrectAnswer(String answer);
 
     public String getQuestion() {
-        return question;
+        return this.question;
     }
-
     public void setQuestion(String question) {
         this.question = question;
     }
-
     public String getCorrectAnswer() {
-        return correctAnswer;
+        return this.correctAnswer;
     }
-
     public void setCorrectAnswer(String correctAnswer) {
         this.correctAnswer = correctAnswer;
     }

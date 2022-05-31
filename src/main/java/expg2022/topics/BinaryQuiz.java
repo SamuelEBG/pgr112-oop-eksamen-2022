@@ -7,11 +7,6 @@ public class BinaryQuiz extends AbstractQuiz{
     }
 
     @Override
-    public void showQuestion() {
-        System.out.println(super.getQuestion());
-    }
-
-    @Override
     public boolean isCorrectAnswer(String answer) {
         return answer.equals(getCorrectAnswer());
     }

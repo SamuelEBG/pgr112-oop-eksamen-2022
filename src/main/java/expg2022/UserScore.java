@@ -23,18 +23,16 @@ public class UserScore {
     }
 
     public int getScore() {
-        return score;
+        return this.score;
     }
     public void setScore(int score) {
         this.score = score;
     }
     public String getTopic() {
-        return topic;
+        return this.topic;
     }
     public void setTopic(String topic) {this.topic = topic;}
-
-    public User getUser() {return user;}
-
+    public User getUser() {return this.user;}
     public void setUser(User user) {
         this.user = user;
     }

@@ -12,27 +12,15 @@ public class MultiChoiceQuiz extends AbstractQuiz{
     }
 
     @Override
-    public void showQuestion() {
-        System.out.println(super.getQuestion());
-    }
-
-    @Override
     public boolean isCorrectAnswer(String answer) {
         return answer.equals(getCorrectAnswer());
     }
-
     public void setCorrectAnswer(String answer){
         super.setCorrectAnswer(answer);
     }
-
-    public void setQuestion(String question) {
-        super.setQuestion(question);
-    }
-
     public ArrayList<String> getAnswers() {
         return answers;
     }
-
     public void setAnswers(ArrayList<String> answers) {
         this.answers = answers;
     }
