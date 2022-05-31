@@ -1,16 +1,16 @@
-package main.java;
+package expg2022;
 
-import main.java.dto.BinaryQuizDao;
-import main.java.dto.MultiChoiceQuizDao;
-import main.java.topics.AbstractQuiz;
-import main.java.topics.BinaryQuiz;
-import main.java.topics.MultiChoiceQuiz;
+import expg2022.dto.BinaryQuizDao;
+import expg2022.dto.MultiChoiceQuizDao;
+import expg2022.topics.AbstractQuiz;
+import expg2022.topics.BinaryQuiz;
+import expg2022.topics.MultiChoiceQuiz;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import static main.java.ReadAndWriteFromTextFile.readFromTextFile;
+import static expg2022.ReadAndWriteFromTextFile.readFromTextFile;
 
 public class Program {
 

@@ -1,4 +1,4 @@
-package main.java;
+package expg2022;
 
 public class UserScore {
 

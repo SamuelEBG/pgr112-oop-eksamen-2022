@@ -1,7 +1,6 @@
-package main.java.dto;
+package expg2022.dto;
 
-import main.java.topics.BinaryQuiz;
-import main.java.topics.MultiChoiceQuiz;
+import expg2022.topics.MultiChoiceQuiz;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

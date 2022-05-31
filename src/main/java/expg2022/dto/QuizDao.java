@@ -1,4 +1,4 @@
-package main.java.dto;
+package expg2022.dto;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

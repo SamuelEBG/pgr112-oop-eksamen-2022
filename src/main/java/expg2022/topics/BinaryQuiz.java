@@ -1,4 +1,4 @@
-package main.java.topics;
+package expg2022.topics;
 
 public class BinaryQuiz extends AbstractQuiz{
 

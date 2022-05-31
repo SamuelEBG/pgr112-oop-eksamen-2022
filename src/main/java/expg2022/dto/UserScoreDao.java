@@ -1,6 +1,6 @@
-package main.java.dto;
+package expg2022.dto;
 
-import main.java.UserScore;
+import expg2022.UserScore;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

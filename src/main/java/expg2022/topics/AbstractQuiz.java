@@ -1,4 +1,4 @@
-package main.java.topics;
+package expg2022.topics;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

@@ -1,8 +1,8 @@
-package main.java;
+package expg2022;
 
-import main.java.topics.AbstractQuiz;
-import main.java.topics.BinaryQuiz;
-import main.java.topics.MultiChoiceQuiz;
+import expg2022.topics.AbstractQuiz;
+import expg2022.topics.BinaryQuiz;
+import expg2022.topics.MultiChoiceQuiz;
 
 import java.io.File;
 import java.io.FileNotFoundException;
