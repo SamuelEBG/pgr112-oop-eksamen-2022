@@ -4,6 +4,7 @@ import main.java.UserScore;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class UserScoreDao extends QuizDao<UserScore> {
 
@@ -13,7 +14,7 @@ public class UserScoreDao extends QuizDao<UserScore> {
     }
 
     @Override
-    public UserScore retrieve(UserScore userScore) throws SQLException {
+    public ArrayList<UserScore> retrieveAll(String userName) throws SQLException {
         return null;
     }
 

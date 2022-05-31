@@ -1,8 +1,12 @@
 package main.java;
 
+import main.java.dto.BinaryQuizDao;
+import main.java.dto.MultiChoiceQuizDao;
 import main.java.topics.AbstractQuiz;
+import main.java.topics.BinaryQuiz;
 import main.java.topics.MultiChoiceQuiz;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -18,16 +22,38 @@ public class Program {
     public Program() {
         quizRegister = new ArrayList<>();
         readFromTextFile(quizRegister);
-        quizMenu();
+        addQuizzesToDb(quizRegister);
+        //quizMenu();
+       /*
         quizRegister.stream()
                 .filter(abstractQuiz -> abstractQuiz instanceof MultiChoiceQuiz)
                 .map(abstractQuiz -> ((MultiChoiceQuiz) abstractQuiz)
                         .getAnswers())
                 .forEach(System.out::println);
+        quizRegister.stream().filter(abstractQuiz -> abstractQuiz instanceof MultiChoiceQuiz)
+                .map(abstractQuiz -> ((MultiChoiceQuiz) abstractQuiz)
+                        .getCorrectAnswer())
+                .forEach(System.out::println);
+
+        */
     }
 
-    public void addQuizzesToDb(){
+    public void addQuizzesToDb(ArrayList<AbstractQuiz> quizArrayList){
 
+        BinaryQuizDao bqd = new BinaryQuizDao();
+        MultiChoiceQuizDao mcqd = new MultiChoiceQuizDao();
+
+        try{
+            for (AbstractQuiz abstractQuiz : quizArrayList) {
+                if (abstractQuiz instanceof MultiChoiceQuiz) {
+                    mcqd.create((MultiChoiceQuiz) abstractQuiz);
+                } else if (abstractQuiz instanceof BinaryQuiz) {
+                    bqd.create((BinaryQuiz) abstractQuiz);
+                }
+            }
+        } catch (SQLException exception){
+            exception.printStackTrace();
+        }
     }
 
     String menuChoicesA = """

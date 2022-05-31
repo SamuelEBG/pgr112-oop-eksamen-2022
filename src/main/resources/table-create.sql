@@ -19,7 +19,7 @@ CREATE TABLE multiChoiceQuiz (
     answerB varChar(100),
     answerC varChar(100),
     answerD varChar(100),
-    correctAnswer char(10),
+    correctAnswer varChar(100),
     PRIMARY KEY (id)
 );
 
