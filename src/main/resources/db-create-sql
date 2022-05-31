@@ -1,0 +1,4 @@
+DROP DATABASE IF EXISTS quizDb;
+CREATE DATABASE quizDb;
+Use quizDb;
+GRANT ALL on quizDb.* TO 'samuel';

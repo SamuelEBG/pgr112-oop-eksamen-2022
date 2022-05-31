@@ -1,0 +1,51 @@
+Football
+q1
+What team has the most superbowl wins?
+The Cleveland Browns
+The Mean Machines
+Pittsburgh Steelers and New England Patriots are tied
+Tom Brady
+Pittsburgh Steelers and New England Patriots are tied
+q2
+Who is the player with the most recorded SOLO tackles during a regular season?
+Troy Polamalu
+Ray Lewis
+Ed Reed
+Luke Kuechly
+Ray Lewis
+q3
+Who is the player with the most recorded rushing yards in a regular season?
+Eric Dickerson
+Adrian Peterson
+Jerome Bettis
+Barry Sanders
+Eric Dickerson
+q4
+Who is the only defensive player to win a Heisman Trophy?
+Ray Lewis
+Deion Sanders
+Reggie White
+Charles Woodson
+Charles Woodson
+q5
+Who is the player with the most regular season passing TDs?
+Tom Brady
+Peyton Manning
+Drew Brees
+Patrick Mahomes
+Peyton Manning
+---
+MMA
+q1
+Is Derrick Lewis the leader in knockout finishes in the UFC?
+yes
+q2
+Is Andersson Silva the GOAT?
+yes
+33
+Has Khabib Nurmagomedov lost a fight?
+no
+q4
+Is Wanderlei Silvas nickname The Axe Murderer?
+yes
+---
