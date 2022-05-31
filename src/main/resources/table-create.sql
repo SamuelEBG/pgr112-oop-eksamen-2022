@@ -15,11 +15,11 @@ CREATE TABLE userScore(
 CREATE TABLE multiChoiceQuiz (
     id INT NOT NULL AUTO_INCREMENT,
     question varChar(400),
-    answerA varChar(100),
-    answerB varChar(100),
-    answerC varChar(100),
-    answerD varChar(100),
-    correctAnswer varChar(100),
+    answer1 varChar(100),
+    answer2 varChar(100),
+    answer3 varChar(100),
+    answer4 varChar(100),
+    correctAnswer char(100),
     PRIMARY KEY (id)
 );
 

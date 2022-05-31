@@ -15,10 +15,10 @@ public class MultiChoiceQuizDao extends QuizDao<MultiChoiceQuiz>{
         String prepapredCreate =
                 "INSERT INTO multiChoiceQuiz(" +
                         "question," +
-                        "answerA, " +
-                        "answerB, " +
-                        "answerC, " +
-                        "answerD, " +
+                        "answer1, " +
+                        "answer2, " +
+                        "answer3, " +
+                        "answer4, " +
                         "correctAnswer)" +
                         "VALUES(?, ?, ?, ?, ?, ?)";
         try (Connection conn = getConnection()) {
@@ -49,21 +49,13 @@ public class MultiChoiceQuizDao extends QuizDao<MultiChoiceQuiz>{
         try(Connection conn = getConnection()){
             PreparedStatement stmt = conn.prepareStatement(preparedSelect);
 
-            // stmt.setInt(1, Integer.parseInt(quizId));
-
             ResultSet resultSet = stmt.executeQuery();
 
             while(resultSet.next()){
                 result.add(mapFromResultSet(resultSet));
             }
             return result;
-            /*
-            if(resultSet.next()){
-                return mapFromResultSet(resultSet);
-            }
-            else return null;
 
-             */
         } catch (SQLException exception){
             exception.printStackTrace();
         }
@@ -75,16 +67,16 @@ public class MultiChoiceQuizDao extends QuizDao<MultiChoiceQuiz>{
         ArrayList<String> answers = new ArrayList<>();
 
         String question = resultSet.getString("question");
-        String answerA = resultSet.getString("answerA");
-        String answerB = resultSet.getString("answerB");
-        String answerC = resultSet.getString("answerC");
-        String answerD = resultSet.getString("answerD");
+        String answer1 = resultSet.getString("answer1");
+        String answer2 = resultSet.getString("answer2");
+        String answer3 = resultSet.getString("answer3");
+        String answer4 = resultSet.getString("answer4");
         String correctAnswer = resultSet.getString("correctAnswer");
 
-        answers.add(answerA);
-        answers.add(answerB);
-        answers.add(answerC);
-        answers.add(answerD);
+        answers.add(answer1);
+        answers.add(answer2);
+        answers.add(answer3);
+        answers.add(answer4);
 
         return new MultiChoiceQuiz(question, correctAnswer, answers);
     }

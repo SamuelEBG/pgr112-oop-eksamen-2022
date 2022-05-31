@@ -1,6 +1,8 @@
 package expg2022.dto;
 
+import expg2022.User;
 import expg2022.UserScore;
+import expg2022.topics.BinaryQuiz;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -33,12 +35,89 @@ public class UserScoreDao extends QuizDao<UserScore> {
         }
     }
 
-    public ArrayList<UserScore> retrieveAll(String userName) throws SQLException {
+    public ArrayList<UserScore> retrieveByScoreHigherThan(int score, String topic){
+        ArrayList<UserScore> result = new ArrayList<>();
+        String preparedSelect = "SELECT * FROM userScore " +
+                "WHERE topic LIKE ? " +
+                "HAVING score > ? " +
+                "ORDER BY score";
+
+        try(Connection conn = getConnection()){
+            PreparedStatement stmt = conn.prepareStatement(preparedSelect);
+
+            stmt.setString(1, topic);
+            stmt.setInt(2, score);
+
+            ResultSet resultSet = stmt.executeQuery();
+
+            if(resultSet == null){
+                return null;
+            }
+
+            while(resultSet.next()){
+                result.add(mapFromResultSet(resultSet));
+            }
+            return result;
+
+        } catch (SQLException exception){
+            exception.printStackTrace();
+        }
+        return null;
+    }
+
+    public ArrayList<UserScore> retrieveByUserName(String userName){
+        ArrayList<UserScore> result = new ArrayList<>();
+        String preparedSelect = "SELECT * FROM userScore " +
+                "WHERE user LIKE ?";
+
+        try(Connection conn = getConnection()){
+            PreparedStatement stmt = conn.prepareStatement(preparedSelect);
+
+            stmt.setString(1, userName);
+
+            ResultSet resultSet = stmt.executeQuery();
+
+            if(resultSet == null){
+                return null;
+            }
+
+            while(resultSet.next()){
+                result.add(mapFromResultSet(resultSet));
+            }
+            return result;
+
+        } catch (SQLException exception){
+            exception.printStackTrace();
+        }
+        return null;
+    }
+
+    public ArrayList<UserScore> retrieveAll(){
+        ArrayList<UserScore> result = new ArrayList<>();
+        String preparedSelect = "SELECT * FROM userScore";
+
+        try(Connection conn = getConnection()){
+            PreparedStatement stmt = conn.prepareStatement(preparedSelect);
+
+            ResultSet resultSet = stmt.executeQuery();
+
+            while(resultSet.next()){
+                result.add(mapFromResultSet(resultSet));
+            }
+            return result;
+
+        } catch (SQLException exception){
+            exception.printStackTrace();
+        }
         return null;
     }
 
     @Override
     public UserScore mapFromResultSet(ResultSet resultSet) throws SQLException {
-        return null;
+        String userName = resultSet.getString("user");
+        int score = resultSet.getInt("score");
+        String topic = resultSet.getString("topic");
+
+        return new UserScore(score, topic, new User(userName));
     }
 }

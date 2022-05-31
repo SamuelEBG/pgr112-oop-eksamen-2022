@@ -38,21 +38,13 @@ public class BinaryQuizDao extends QuizDao<BinaryQuiz>{
         try(Connection conn = getConnection()){
             PreparedStatement stmt = conn.prepareStatement(preparedSelect);
 
-            // stmt.setInt(1, Integer.parseInt(quizId));
-
             ResultSet resultSet = stmt.executeQuery();
 
             while(resultSet.next()){
                 result.add(mapFromResultSet(resultSet));
             }
             return result;
-            /*
-            if(resultSet.next()){
-                return mapFromResultSet(resultSet);
-            }
-            else return null;
 
-             */
         } catch (SQLException exception){
             exception.printStackTrace();
         }

@@ -12,6 +12,16 @@ public class UserScore {
         this.topic = topic;
     }
 
+    @Override
+    public String toString(){
+        return String.format(
+                "%s %s %s",
+                this.user.getUserName(),
+                this.score,
+                this.topic
+        );
+    }
+
     public int getScore() {
         return score;
     }

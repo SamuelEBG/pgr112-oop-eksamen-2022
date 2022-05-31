@@ -34,6 +34,27 @@ Peyton Manning
 Drew Brees
 Patrick Mahomes
 Peyton Manning
+q6
+What player has the nickname "White Rhino"?
+Wes Welker
+Jordy Nelson
+Christian McCaffrey
+Peyton Hillis
+Peyton Hillis
+q7
+How many Super Bowls have the Miami Dolphins played in?
+3
+2
+9
+6
+6
+q8
+How many fingers did Odell Beckhamn Jr use to catch his spectacular layout TD-catch?
+3
+2
+4
+0
+3
 ---
 MMA
 q1
@@ -51,4 +72,13 @@ yes
 q5
 Has there ever been a cross-gender fight in the UFC?
 no
+q6
+Is Paddy Pimblet a scouser?
+yes
+q7
+Is Jorge Masvidals nickname Street Jesus?
+yes
+q8
+Does UFC stand for Ultimate Fighting Championship?
+yes
 ---
