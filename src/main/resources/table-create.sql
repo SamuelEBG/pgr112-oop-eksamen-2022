@@ -2,9 +2,9 @@ Use quizDb;
 
 DROP TABLE IF EXISTS binaryQuiz;
 DROP TABLE IF EXISTS multiChoiceQuiz;
-DROP TABLE IF EXISTS highscore;
+DROP TABLE IF EXISTS userScore;
 
-CREATE TABLE highscore(
+CREATE TABLE userScore(
     id INT NOT NULL AUTO_INCREMENT,
     user varChar(50),
     score smallint,

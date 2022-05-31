@@ -9,7 +9,6 @@ import java.util.ArrayList;
 public abstract class QuizDao<T> {
 
     public abstract void create(T t) throws SQLException;
-    public abstract ArrayList<T> retrieveAll(String string) throws SQLException;
     public abstract T mapFromResultSet(ResultSet resultSet) throws SQLException;
 
     public Connection getConnection() throws SQLException {

@@ -32,8 +32,7 @@ public class BinaryQuizDao extends QuizDao<BinaryQuiz>{
         }
     }
 
-    @Override
-    public ArrayList<BinaryQuiz> retrieveAll(String quizId){
+    public ArrayList<BinaryQuiz> retrieveAll(){
         ArrayList<BinaryQuiz> result = new ArrayList<>();
         String preparedSelect = "SELECT * FROM binaryQuiz";
         try(Connection conn = getConnection()){

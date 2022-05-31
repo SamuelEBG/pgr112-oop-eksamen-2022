@@ -2,26 +2,17 @@ package expg2022;
 
 public class User {
 
+    private String userName;
+
     public User(String userName) {
         this.userName = userName;
     }
 
-    private String userName;
-    private UserScore userScore;
-
     public String getUserName() {
         return userName;
     }
-
     public void setUserName(String userName) {
         this.userName = userName;
     }
 
-    public UserScore getUserScore() {
-        return userScore;
-    }
-
-    public void setUserScore(UserScore userScore) {
-        this.userScore = userScore;
-    }
 }

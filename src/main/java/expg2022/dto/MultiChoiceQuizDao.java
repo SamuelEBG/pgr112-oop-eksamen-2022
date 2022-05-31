@@ -41,8 +41,7 @@ public class MultiChoiceQuizDao extends QuizDao<MultiChoiceQuiz>{
         }
     }
 
-    @Override
-    public ArrayList<MultiChoiceQuiz> retrieveAll(String quizId){
+    public ArrayList<MultiChoiceQuiz> retrieveAll(){
 
         ArrayList<MultiChoiceQuiz> result = new ArrayList<>();
         String preparedSelect = "SELECT * FROM MultiChoiceQuiz";
