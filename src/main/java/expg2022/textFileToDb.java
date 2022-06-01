@@ -13,7 +13,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class textFileToDb {
-
+    // I decided to make these methods static because I don't think we need to
+    // create an object of this class when all it does is just run once and then it's done.
     private static final ArrayList<AbstractQuiz> quizRegister = new ArrayList<>();
 
     public static void quizzesFromTextToDb(){
@@ -34,7 +35,19 @@ public class textFileToDb {
                     }
                 }
             }
+            // Some streams used to test if things were added from the text file.
+            /*
+            quizRegister.stream()
+                    .filter(abstractQuiz -> abstractQuiz instanceof MultiChoiceQuiz)
+                    .map(abstractQuiz -> ((MultiChoiceQuiz) abstractQuiz)
+                            .getAnswers())
+                    .forEach(System.out::println);
 
+            quizRegister.stream().filter(abstractQuiz -> abstractQuiz instanceof MultiChoiceQuiz)
+                    .map(abstractQuiz -> ((MultiChoiceQuiz) abstractQuiz)
+                            .getCorrectAnswer())
+                    .forEach(System.out::println);
+            */
             addQuizzesToDb(quizRegister);
         } catch (FileNotFoundException exception){
             exception.printStackTrace();

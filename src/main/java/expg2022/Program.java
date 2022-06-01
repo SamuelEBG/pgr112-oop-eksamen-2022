@@ -18,26 +18,14 @@ import static expg2022.textFileToDb.quizzesFromTextToDb;
 
 public class Program {
 
-    private ArrayList<AbstractQuiz> currentQuiz;
     private User currentPlayer;
-
+    // When running program first time run quizzesFromTextToDb, if it isn't commented
+    // out it will keep adding the same quizzes to the db again.
     public Program() {
-        //quizzesFromTextToDb();
+        quizzesFromTextToDb();
         Scanner input = new Scanner(System.in);
         createUser(input);
         topicMenu(input);
-       /*
-        quizRegister.stream()
-                .filter(abstractQuiz -> abstractQuiz instanceof MultiChoiceQuiz)
-                .map(abstractQuiz -> ((MultiChoiceQuiz) abstractQuiz)
-                        .getAnswers())
-                .forEach(System.out::println);
-        quizRegister.stream().filter(abstractQuiz -> abstractQuiz instanceof MultiChoiceQuiz)
-                .map(abstractQuiz -> ((MultiChoiceQuiz) abstractQuiz)
-                        .getCorrectAnswer())
-                .forEach(System.out::println);
-
-        */
     }
 
     public void topicMenu(Scanner input){
@@ -163,7 +151,6 @@ public class Program {
             System.out.println("Question " + (i+1) + " : "
                     + currentQuizList.get(i).getQuestion());
             userAnswer = input.nextLine();
-            // !userAnswer.equals(currentQuizList.get(i).getCorrectAnswer())
             if(!currentQuizList.get(i).isCorrectAnswer(userAnswer)){
                 System.out.println("Incorrect answer");
 
@@ -235,6 +222,11 @@ public class Program {
                 You get 1 point for each correct answer, good luck!
                 """);
 
+        /*
+            This will run through each quiz-object and print its questions and answers.
+            When user is done it will print the highscore, if user exits the quiz
+            before it ends they will not be a part of the highscore, and go to the menu instead.
+        */
         for(int i = 0; i < counter; i++){
             System.out.println("Question " + (i+1) + " : "
                     + currentQuizList.get(i).getQuestion());
@@ -246,10 +238,6 @@ public class Program {
 
             int inputNumber = Integer.parseInt(input.nextLine());
 
-            // Can shuffle answers so that they cannot be memorized.
-            // !currentQuizList.get(i)
-            //                    .getAnswers().get((inputNumber-1))
-            //                    .equals(currentQuizList.get(i).getCorrectAnswer())
             if(!currentQuizList.get(i)
                     .isCorrectAnswer(currentQuizList.get(i)
                     .getAnswers().get((inputNumber-1)))){

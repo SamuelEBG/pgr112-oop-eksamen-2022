@@ -26,12 +26,16 @@ public class UserScore {
         return this.score;
     }
     public void setScore(int score) {
-        this.score = score;
+        this.score = Math.max(score, 0);
     }
     public String getTopic() {
         return this.topic;
     }
-    public void setTopic(String topic) {this.topic = topic;}
+    public void setTopic(String topic) {
+        if(topic == null){
+            this.topic = "Unknown";
+        } else this.topic = topic;
+    }
     public User getUser() {return this.user;}
     public void setUser(User user) {
         this.user = user;
